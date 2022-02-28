@@ -61,18 +61,42 @@ del arreglo de entrada libremente, debe retornar un objeto
 con los valores mencionados*/
 
 let testSampleList = [
-    "Capitan",
-    "Comandante",
-    "Teniente",
-    "Cabo",
-    "Brigadier",
-    "Coronel",
-    "Zar",
+    "Capitan", //7
+    "Comandante", //10
+    "Teniente", //8
+    "Cabo", //4
+    "Brigadier",//9
+    "Coronel", //7
+    "Zar", //3
 ];
 
 function wordLengthClassifier(wordsList) {
+    let longestWord = wordsList[0];
+    let shortestWord = wordsList[0];
+    let total = 0;
+    let promedio = 0;
+    let obj = {};
+    for (let i = 0; i < wordsList.length; i++) {
+        const actualWord = wordsList[i];
+        total += actualWord.length;
+        promedio = total / wordsList.length
+        if(actualWord.length > longestWord.length){
+            longestWord = actualWord;
+        }
+        if (actualWord.length < shortestWord.length) {
+            shortestWord = actualWord
+        }
+        obj = {
+            palabraMasCorta: shortestWord,
+            palabraMasLarga: longestWord,
+            tamañoPromedio: promedio.toFixed(2),
+        };
+    }
+    console.log(obj);
     // :)
 }
+
+wordLengthClassifier(testSampleList);
 
 
 /*Dado un string retorna si este es o no un palíndromo. No debe diferenciar entre mayúsculas y minúsculas*/
