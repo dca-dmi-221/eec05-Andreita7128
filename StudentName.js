@@ -4,7 +4,14 @@
 
 let testWord = "esternocleidomastoideo";
 function wordCutter(word) {
-   // :)
+    let newWord = [];
+    for (let i = 0; i < word.length; i++) {
+        let num = Math.floor(Math.random()* word.length);
+        newWord.push(word[num]);
+        word.split(i,1);
+    }
+    console.log(newWord);
+   // :) 
 }
 wordCutter(testWord);
 
@@ -27,6 +34,7 @@ let testWordsList = [
 
 // pruebe para cada palabra A, B y C
 function wordSearcherIgnoreCase(targetWord, wordsList) {
+    
    // :)
 }
 
