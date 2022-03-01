@@ -106,9 +106,23 @@ let onVerificationWordB = "querer";
 let onVerificationWordC = "Gomosos";
 let onVerificationWordD = "Somos";
 
-function palindromeVerifier(word) {
+ /*function palindromeVerifier(word) {
+    for (let i = 0; i < word.length; i++) {
+        const palabra = word[i];
+        console.log(palabra.reverse());
+       if(palabra.toLowerCase() === word.toLowerCase()){
+            console.log(word + " es un palíndromo");
+        } else {
+            console.log(word + " no es un palíndromo");
+        }
+    }
     // :)
 }
+
+palindromeVerifier(onVerificationWordA);
+palindromeVerifier(onVerificationWordB);
+palindromeVerifier(onVerificationWordC);
+palindromeVerifier(onVerificationWordD);*/
 
 
 /*Dado un objeto que contiene una lista de palabras contar el
@@ -118,9 +132,26 @@ let containerTestObject = {
 }
 
 function lettersCounter(objectContainer) {
+    let countVocal = 0;
+    let counConsonant = 0;
+    for (let i = 0; i < objectContainer.list.length; i++) {
+        const word = objectContainer.list[i];
+        for (let j = 0; j < word.length; j++) {
+            const wordNew = word[j]
+            if(wordNew.toLowerCase() === "a"||wordNew.toLowerCase() === "e" ||wordNew.toLowerCase() === "i" 
+            ||wordNew.toLowerCase() === "o" ||wordNew.toLowerCase() === "u")
+            {
+                countVocal++;
+            }else {
+                counConsonant++;
+            }
+        }
+    }
+    console.log(countVocal + " " + counConsonant);
     // :)
 }
 
+lettersCounter(containerTestObject);
 
 /*Dado 2 arreglos de strings retornar un arreglo con todos los strings.*/
 let wordArrayA = ["hola", "¿", "cómo", "estás", "?"];
