@@ -65,7 +65,7 @@ let testSampleList = [
     "Comandante", //10
     "Teniente", //8
     "Cabo", //4
-    "Brigadier",//9
+    "Brigadier", //9
     "Coronel", //7
     "Zar", //3
 ];
@@ -80,7 +80,7 @@ function wordLengthClassifier(wordsList) {
         const actualWord = wordsList[i];
         total += actualWord.length;
         promedio = total / wordsList.length
-        if(actualWord.length > longestWord.length){
+        if (actualWord.length > longestWord.length) {
             longestWord = actualWord;
         }
         if (actualWord.length < shortestWord.length) {
@@ -106,11 +106,17 @@ let onVerificationWordB = "querer";
 let onVerificationWordC = "Gomosos";
 let onVerificationWordD = "Somos";
 
- /*function palindromeVerifier(word) {
+/*function palindromeVerifier(word) {
+    let newArray = [];
     for (let i = 0; i < word.length; i++) {
-        const palabra = word[i];
-        console.log(palabra.reverse());
-       if(palabra.toLowerCase() === word.toLowerCase()){
+        newArray.push(word[i]);
+        console.log(newArray);
+        for (let j = 0; j < newArray.length; j++) {
+            const palabra = newArray[j];
+            console.log(palabra);
+            
+        }
+        if (palabra.toLowerCase() === word.toLowerCase()) {
             console.log(word + " es un palíndromo");
         } else {
             console.log(word + " no es un palíndromo");
@@ -119,10 +125,10 @@ let onVerificationWordD = "Somos";
     // :)
 }
 
-palindromeVerifier(onVerificationWordA);
-palindromeVerifier(onVerificationWordB);
-palindromeVerifier(onVerificationWordC);
-palindromeVerifier(onVerificationWordD);*/
+palindromeVerifier(onVerificationWordA);*/
+//palindromeVerifier(onVerificationWordB);
+//palindromeVerifier(onVerificationWordC);
+//palindromeVerifier(onVerificationWordD);
 
 
 /*Dado un objeto que contiene una lista de palabras contar el
@@ -138,11 +144,10 @@ function lettersCounter(objectContainer) {
         const word = objectContainer.list[i];
         for (let j = 0; j < word.length; j++) {
             const wordNew = word[j]
-            if(wordNew.toLowerCase() === "a"||wordNew.toLowerCase() === "e" ||wordNew.toLowerCase() === "i" 
-            ||wordNew.toLowerCase() === "o" ||wordNew.toLowerCase() === "u")
-            {
+            if (wordNew.toLowerCase() === "a" || wordNew.toLowerCase() === "e" || wordNew.toLowerCase() === "i" ||
+                wordNew.toLowerCase() === "o" || wordNew.toLowerCase() === "u") {
                 countVocal++;
-            }else {
+            } else {
                 counConsonant++;
             }
         }
@@ -158,9 +163,11 @@ let wordArrayA = ["hola", "¿", "cómo", "estás", "?"];
 let wordArrayB = ["te", "ves", "igual", "te", "ves", "igual"];
 
 function arrayJoiner(listA, listB) {
+    let sumArray = [...listA,...listB];
+    console.log(sumArray);
     // :)
 }
-
+arrayJoiner(wordArrayA,wordArrayB);
 
 /*Dado un arreglo de strings indicar qué posiciones del arreglo
 son anagramas de una palabra base (recibida como parámetro), retorne las posiciones en un arreglo.*/
