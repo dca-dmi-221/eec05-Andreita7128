@@ -35,18 +35,21 @@ let testWordsList = [
 
 // pruebe para cada palabra A, B y C
 function wordSearcherIgnoreCase(targetWord, wordsList) {
-    let container = false;
-    for (let i = 0; i < wordsList.length; i++) {
-        if (wordsList[i].toLowerCase() === targetWord.toLowerCase()) {
-            container = true;
-        }
-    }
-    if (container === true) {
-        console.log(targetWord + " está contenido");
-    } else {
-        console.log(targetWord + " no está contenido");
+    let newWordsList = wordsList.map((element) => element.toLowerCase());
+    let newWord = targetWord.toLowerCase();
+    newWord = normalWord(newWord);
+    newWord = newWordsList.includes(newWord);
+    console.log(targetWord);
+    if(newWord === true){
+        console.log(targetWord + " está contenido en la lista");
+    }else {
+        console.log(targetWord + " no está contenido en la lista");
     }
     // :)
+}
+
+function normalWord(word){
+    return word = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 wordSearcherIgnoreCase(testTargetWordA, testWordsList);
@@ -175,8 +178,28 @@ let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana", "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
+    let count = 0;
+    let wordToVerify = "";
+    for (let i = 0; i < listOfWords.length; i++) {
+        wordToVerify = listOfWords[i];
+        console.log(wordToVerify);
+    }
+    for (let i = 0; i < wordToExplore.length; i++) {
+        const wordToE = wordToExplore[i];
+        for (let j = 0; j < wordToVerify.length; j++) {
+            if(wordToE === wordToVerify[j]){
+                count++
+                console.log(count);
+
+            }            
+        }
+        
+    }
+
     // :)
 }
+
+anagramVerifier(testWordToExplore,wordsToVerify);
 
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
