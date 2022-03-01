@@ -106,29 +106,28 @@ let onVerificationWordB = "querer";
 let onVerificationWordC = "Gomosos";
 let onVerificationWordD = "Somos";
 
-/*function palindromeVerifier(word) {
+function palindromeVerifier(word) {
     let newArray = [];
+    let newPalabra = "";
     for (let i = 0; i < word.length; i++) {
-        newArray.push(word[i]);
-        console.log(newArray);
-        for (let j = 0; j < newArray.length; j++) {
-            const palabra = newArray[j];
-            console.log(palabra);
-            
-        }
-        if (palabra.toLowerCase() === word.toLowerCase()) {
-            console.log(word + " es un palíndromo");
-        } else {
-            console.log(word + " no es un palíndromo");
-        }
+        newArray.push(word[i].toLowerCase());
+    }
+    newArray.reverse();
+    for (let j = 0; j < newArray.length; j++) {
+        newPalabra += newArray[j];
+    }
+    if (newPalabra === word.toLowerCase()) {
+        console.log(word + " es un palíndromo");
+    } else {
+        console.log(word + " no es un palíndromo");
     }
     // :)
 }
 
-palindromeVerifier(onVerificationWordA);*/
-//palindromeVerifier(onVerificationWordB);
-//palindromeVerifier(onVerificationWordC);
-//palindromeVerifier(onVerificationWordD);
+palindromeVerifier(onVerificationWordA);
+palindromeVerifier(onVerificationWordB);
+palindromeVerifier(onVerificationWordC);
+palindromeVerifier(onVerificationWordD);
 
 
 /*Dado un objeto que contiene una lista de palabras contar el
@@ -163,11 +162,11 @@ let wordArrayA = ["hola", "¿", "cómo", "estás", "?"];
 let wordArrayB = ["te", "ves", "igual", "te", "ves", "igual"];
 
 function arrayJoiner(listA, listB) {
-    let sumArray = [...listA,...listB];
+    let sumArray = [...listA, ...listB];
     console.log(sumArray);
     // :)
 }
-arrayJoiner(wordArrayA,wordArrayB);
+arrayJoiner(wordArrayA, wordArrayB);
 
 /*Dado un arreglo de strings indicar qué posiciones del arreglo
 son anagramas de una palabra base (recibida como parámetro), retorne las posiciones en un arreglo.*/
