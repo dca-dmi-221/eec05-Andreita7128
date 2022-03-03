@@ -207,7 +207,7 @@ anagramVerifier(testWordToExplore,wordsToVerify);*/
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
 
-let testObjMultiContainer = {
+/*let testObjMultiContainer = {
     listA: ["piraña", "cachama", "tilapia", "trucha", "carpa", "salmón"],
     listB: ["rinoceronte", "elefante", "jirafa", "tigre", "gacela", "ñú"]
 };
@@ -240,8 +240,27 @@ console.log(vocalsRemoverFromObject(testObjMultiContainer));
 let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
 function lastVocalReplacer(words) {
+    let countVocal = 0
+    for (let i = 0; i < words.length ; i++) {
+        const palabra = words[i];
+        for (let j = palabra.length; j > -1; j--) {
+            const letter = palabra[j];
+            console.log(letter)
+            if(letter === 'a'||letter === 'e'||letter === 'i'
+            ||letter === 'o'||letter === 'u'){
+                countVocal++;
+            }
+            if(countVocal === 1){
+                console.log(countVocal);
+                letter.replace(j,"x");
+            }
+        }
+    }
+    console.log(words);
     // :)
 }
+
+lastVocalReplacer(someWordsToTest);
 
 
 /*Dada una lista de palabras verificar si alguna de las palabras es la
