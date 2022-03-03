@@ -201,7 +201,20 @@ let testObjMultiContainer = {
 };
 
 function vocalsRemoverFromObject(objectMultiContainer) {
-   
+    let newList = objectMultiContainer.listA.concat(objectMultiContainer.listB);
+    let result = []
+    console.log(newList)
+    for (let i = 0; i < newList.length; i++) {
+        const palabra = newList[i].split('');
+        for (let j = 0; j < newList[i].length; j++) {
+            if (palabra[j] === "a" || palabra[j] === "e" || palabra[j] === "i"
+            || palabra[j] === "o" || palabra[j] === "u") {
+                palabra.splice(j, 1);
+            }
+        }
+        result.push(palabra.join(''))
+    }
+    console.log(result)
 }
 vocalsRemoverFromObject(testObjMultiContainer)
 
