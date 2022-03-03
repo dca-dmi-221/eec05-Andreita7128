@@ -142,6 +142,7 @@ let containerTestObject = {
 function lettersCounter(objectContainer) {
     let countVocal = 0;
     let counConsonant = 0;
+    let array = [];
     for (let i = 0; i < objectContainer.list.length; i++) {
         const word = objectContainer.list[i];
         for (let j = 0; j < word.length; j++) {
@@ -154,7 +155,9 @@ function lettersCounter(objectContainer) {
             }
         }
     }
-    console.log(countVocal + " " + counConsonant);
+    array.push(countVocal);
+    array.push(counConsonant);
+    console.log(array);
     // :)
 }
 
@@ -174,7 +177,7 @@ arrayJoiner(wordArrayA, wordArrayB);
 /*Dado un arreglo de strings indicar qué posiciones del arreglo
 son anagramas de una palabra base (recibida como parámetro), retorne las posiciones en un arreglo.*/
 
-let testWordToExplore = "amar";
+/*let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana", "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
@@ -199,7 +202,7 @@ function anagramVerifier(wordToExplore, listOfWords) {
     // :)
 }
 
-anagramVerifier(testWordToExplore,wordsToVerify);
+anagramVerifier(testWordToExplore,wordsToVerify);*/
 
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
@@ -210,6 +213,23 @@ let testObjMultiContainer = {
 };
 
 function vocalsRemoverFromObject(objectMultiContainer) {
+    let newList = objectMultiContainer.listA.concat(objectMultiContainer.listB);
+    let newObject = {};
+
+    for (let i = 0; i < newList.length; i++) {
+        const wordList = newList[i];
+        console.log(wordList);
+    
+        for (let j = 0; j < wordList.length; j++) {
+            const letter = wordList[j]
+            if(letter.toLowerCase() === 'a'||letter.toLowerCase() === 'e'||letter.toLowerCase() === 'i'
+            ||letter.toLowerCase() === 'o'||letter.toLowerCase() === 'u'){
+                wordList.split(letter,1)
+            }
+        }
+    }
+    console.log(newList);
+
     // :)
 }
 
