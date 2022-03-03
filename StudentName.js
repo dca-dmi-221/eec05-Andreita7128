@@ -40,15 +40,15 @@ function wordSearcherIgnoreCase(targetWord, wordsList) {
     newWord = normalWord(newWord);
     newWord = newWordsList.includes(newWord);
     console.log(targetWord);
-    if(newWord === true){
+    if (newWord === true) {
         console.log(targetWord + " está contenido en la lista");
-    }else {
+    } else {
         console.log(targetWord + " no está contenido en la lista");
     }
     // :)
 }
 
-function normalWord(word){
+function normalWord(word) {
     return word = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
@@ -177,60 +177,71 @@ arrayJoiner(wordArrayA, wordArrayB);
 /*Dado un arreglo de strings indicar qué posiciones del arreglo
 son anagramas de una palabra base (recibida como parámetro), retorne las posiciones en un arreglo.*/
 
-/*let testWordToExplore = "amar";
+let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana", "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
-    let count = 0;
-    let wordToVerify = "";
+    wordToExplore = wordToExplore.replace(/[^\w]/g, '').toLowerCase()
+    listOfWords = listOfWords.replace(/[^\w]/g, '').toLowerCase()
+
     for (let i = 0; i < listOfWords.length; i++) {
-        wordToVerify = listOfWords[i];
-        console.log(wordToVerify);
-    }
-    for (let i = 0; i < wordToExplore.length; i++) {
-        const wordToE = wordToExplore[i];
-        for (let j = 0; j < wordToVerify.length; j++) {
-            if(wordToE === wordToVerify[j]){
-                count++
-                console.log(count);
-
-            }            
+        const palabra = listOfWords[i];
+        if (wordToExplore.length !== palabra.length) {
+            return false
         }
-        
     }
 
-    // :)
+
+    let list = list.split("")
+
+    for (let char of wordToExplore) {
+        if (!list.includes(char)) {
+            return false
+            break;
+        } else {
+            list.splice(list.indexOf(char), 1)
+        }
+    }
+
+    return true
+
 }
 
-anagramVerifier(testWordToExplore,wordsToVerify);*/
+// :)
+
+anagramVerifier(testWordToExplore, wordsToVerify);
 
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
 
-/*let testObjMultiContainer = {
+let testObjMultiContainer = {
     listA: ["piraña", "cachama", "tilapia", "trucha", "carpa", "salmón"],
     listB: ["rinoceronte", "elefante", "jirafa", "tigre", "gacela", "ñú"]
 };
 
 function vocalsRemoverFromObject(objectMultiContainer) {
-    let newList = objectMultiContainer.listA.concat(objectMultiContainer.listB);
-    let newObject = {};
+    let nuevaLista = objectMultiContainer.listA.concat(objectMultiContainer.listB);
 
-    for (let i = 0; i < newList.length; i++) {
-        const wordList = newList[i];
-        console.log(wordList);
-    
-        for (let j = 0; j < wordList.length; j++) {
-            const letter = wordList[j]
-            if(letter.toLowerCase() === 'a'||letter.toLowerCase() === 'e'||letter.toLowerCase() === 'i'
-            ||letter.toLowerCase() === 'o'||letter.toLowerCase() === 'u'){
-                wordList.split(letter,1)
+    for (let i = 0; i < nuevaLista.length; i++) {
+        const palabra = nuevaLista[i];
+        let nuevaPalabra = normalWord(palabra);
+        nuevaLista.push(nuevaPalabra);
+    }
+
+    for (let i = 0; i < nuevaLista.length; i++) {
+        const palabras = nuevaLista[i];
+        console.log(palabras);
+        for (let j = 0; j < palabras.length; j++) {
+            const letter = palabras[j];
+            console.log(letter);
+            if (letter.toLowerCase() === 'a' || letter.toLowerCase() === 'e' || letter.toLowerCase() === 'i' ||
+                letter.toLowerCase() === 'o' || letter.toLowerCase() === 'u') {
+                palabras.split(j, 1);
             }
         }
+        // :)
     }
-    console.log(newList);
-
-    // :)
+    console.log(nuevaLista);
 }
 
 console.log(vocalsRemoverFromObject(testObjMultiContainer));
@@ -241,18 +252,18 @@ let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "grad
 
 function lastVocalReplacer(words) {
     let countVocal = 0
-    for (let i = 0; i < words.length ; i++) {
+    for (let i = 0; i < words.length; i++) {
         const palabra = words[i];
-        for (let j = palabra.length; j > -1; j--) {
+        for (let j = palabra.length - 1; j > -1; j--) {
             const letter = palabra[j];
-            console.log(letter)
-            if(letter === 'a'||letter === 'e'||letter === 'i'
-            ||letter === 'o'||letter === 'u'){
+
+            if (letter === 'a' || letter === 'e' || letter === 'i' ||
+                letter === 'o' || letter === 'u') {
                 countVocal++;
             }
-            if(countVocal === 1){
+            if (countVocal === 1) {
                 console.log(countVocal);
-                letter.replace(j,"x");
+                letter.replace(j, "x");
             }
         }
     }
@@ -272,5 +283,18 @@ let testListA = ["amor", "sabor", "calor", "firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
+    let newArray = [];
+    let nuevaPalabra;
+    for (let i = 0; i < listA.length; i++) {
+        nuevaPalabra = listA[i];
+        for (let j = nuevaPalabra.length - 1; j >= 0; j--) {
+            const letter = nuevaPalabra[j];
+            newArray.push(letter);
+        }
+    }
+
+    console.log(newArray);
     // :)
 }
+
+doubleListVerifier(testListA, testListB);
