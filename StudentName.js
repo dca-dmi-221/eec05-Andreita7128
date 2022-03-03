@@ -203,12 +203,12 @@ let testObjMultiContainer = {
 function vocalsRemoverFromObject(objectMultiContainer) {
     let newList = objectMultiContainer.listA.concat(objectMultiContainer.listB);
     let result = []
-    console.log(newList)
+
     for (let i = 0; i < newList.length; i++) {
         const palabra = newList[i].split('');
         for (let j = 0; j < newList[i].length; j++) {
-            if (palabra[j] === "a" || palabra[j] === "e" || palabra[j] === "i"
-            || palabra[j] === "o" || palabra[j] === "u") {
+            if (palabra[j] === "a" || palabra[j] === "e" || palabra[j] === "i" ||
+                palabra[j] === "o" || palabra[j] === "u") {
                 palabra.splice(j, 1);
             }
         }
@@ -216,8 +216,6 @@ function vocalsRemoverFromObject(objectMultiContainer) {
     }
     console.log(result)
 }
-vocalsRemoverFromObject(testObjMultiContainer)
-
 console.log(vocalsRemoverFromObject(testObjMultiContainer));
 
 /*Dado un arreglo de palabras reemplazar la última vocal por una x y retornar dicho arreglo.*/
@@ -225,32 +223,10 @@ console.log(vocalsRemoverFromObject(testObjMultiContainer));
 let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
 function lastVocalReplacer(words) {
-    let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
-
-    function lastVocalReplacer(words) {
-        const replacedArray = words.map(word => {
-            let replacedWord;
-            for(let i = word.length - 1; i >= 0; i--) {
-                const letter = word.charAt(i);
-                if(
-                    letter === 'a'||
-                    letter ==='e'||
-                    letter ==='i'|| 
-                    letter === 'o'|| 
-                    letter ==='u'
-                ) {
-                    console.log(word.charAt(i))
-                    replacedWord = word.substring(0, i) + 'X' + i === word.length - 1 ? '' : word.substring(i + 1, word.length - 1);
-                    break;
-                }
-            }
-            return replacedWord;
-        })
-        return replacedArray;
-        // :)
+    for (let i = 0; i < words.length; i++) {
+       words[i] = words[i].replace(/.$/, 'x');
     }
-    
-    console.log(lastVocalReplacer(someWordsToTest));
+    console.log(words)
 }
 
 lastVocalReplacer(someWordsToTest);
@@ -265,7 +241,7 @@ let testListA = ["amor", "sabor", "calor", "firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
-    
+
 }
 
 doubleListVerifier(testListA, testListB);
