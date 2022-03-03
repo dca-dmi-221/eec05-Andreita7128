@@ -216,7 +216,7 @@ function vocalsRemoverFromObject(objectMultiContainer) {
     }
     console.log(result)
 }
-console.log(vocalsRemoverFromObject(testObjMultiContainer));
+vocalsRemoverFromObject(testObjMultiContainer);
 
 /*Dado un arreglo de palabras reemplazar la última vocal por una x y retornar dicho arreglo.*/
 
@@ -250,9 +250,9 @@ function doubleListVerifier(listA, listB) {
             }
 
         }
-        return count;
-    }
 
+    }
+    console.log(count);
 }
 
 doubleListVerifier(testListA, testListB);
