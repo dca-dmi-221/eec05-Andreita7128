@@ -181,35 +181,16 @@ let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana", "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
-    wordToExplore = wordToExplore.replace(/[^\w]/g, '').toLowerCase()
-    listOfWords = listOfWords.replace(/[^\w]/g, '').toLowerCase()
-
-    for (let i = 0; i < listOfWords.length; i++) {
-        const palabra = listOfWords[i];
-        if (wordToExplore.length !== palabra.length) {
-            return false
-        }
-    }
-
-
-    let list = list.split("")
-
-    for (let char of wordToExplore) {
-        if (!list.includes(char)) {
-            return false
-            break;
-        } else {
-            list.splice(list.indexOf(char), 1)
-        }
-    }
-
-    return true
-
+    let posiciones = []
+    listOfWords.forEach((palabra, i) => {
+        if (palabra.split('').every(letra => {
+                return wordToExplore.includes(letra)
+            }))
+            posiciones.push(i)
+    })
+    return posiciones
 }
-
-// :)
-
-anagramVerifier(testWordToExplore, wordsToVerify);
+console.log(anagramVerifier(testWordToExplore, wordsToVerify))
 
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
@@ -220,29 +201,9 @@ let testObjMultiContainer = {
 };
 
 function vocalsRemoverFromObject(objectMultiContainer) {
-    let nuevaLista = objectMultiContainer.listA.concat(objectMultiContainer.listB);
-
-    for (let i = 0; i < nuevaLista.length; i++) {
-        const palabra = nuevaLista[i];
-        let nuevaPalabra = normalWord(palabra);
-        nuevaLista.push(nuevaPalabra);
-    }
-
-    for (let i = 0; i < nuevaLista.length; i++) {
-        const palabras = nuevaLista[i];
-        console.log(palabras);
-        for (let j = 0; j < palabras.length; j++) {
-            const letter = palabras[j];
-            console.log(letter);
-            if (letter.toLowerCase() === 'a' || letter.toLowerCase() === 'e' || letter.toLowerCase() === 'i' ||
-                letter.toLowerCase() === 'o' || letter.toLowerCase() === 'u') {
-                palabras.split(j, 1);
-            }
-        }
-        // :)
-    }
-    console.log(nuevaLista);
+   
 }
+vocalsRemoverFromObject(testObjMultiContainer)
 
 console.log(vocalsRemoverFromObject(testObjMultiContainer));
 
@@ -251,24 +212,32 @@ console.log(vocalsRemoverFromObject(testObjMultiContainer));
 let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
 function lastVocalReplacer(words) {
-    let countVocal = 0
-    for (let i = 0; i < words.length; i++) {
-        const palabra = words[i];
-        for (let j = palabra.length - 1; j > -1; j--) {
-            const letter = palabra[j];
+    let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
-            if (letter === 'a' || letter === 'e' || letter === 'i' ||
-                letter === 'o' || letter === 'u') {
-                countVocal++;
+    function lastVocalReplacer(words) {
+        const replacedArray = words.map(word => {
+            let replacedWord;
+            for(let i = word.length - 1; i >= 0; i--) {
+                const letter = word.charAt(i);
+                if(
+                    letter === 'a'||
+                    letter ==='e'||
+                    letter ==='i'|| 
+                    letter === 'o'|| 
+                    letter ==='u'
+                ) {
+                    console.log(word.charAt(i))
+                    replacedWord = word.substring(0, i) + 'X' + i === word.length - 1 ? '' : word.substring(i + 1, word.length - 1);
+                    break;
+                }
             }
-            if (countVocal === 1) {
-                console.log(countVocal);
-                letter.replace(j, "x");
-            }
-        }
+            return replacedWord;
+        })
+        return replacedArray;
+        // :)
     }
-    console.log(words);
-    // :)
+    
+    console.log(lastVocalReplacer(someWordsToTest));
 }
 
 lastVocalReplacer(someWordsToTest);
@@ -283,18 +252,7 @@ let testListA = ["amor", "sabor", "calor", "firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
-    let newArray = [];
-    let nuevaPalabra;
-    for (let i = 0; i < listA.length; i++) {
-        nuevaPalabra = listA[i];
-        for (let j = nuevaPalabra.length - 1; j >= 0; j--) {
-            const letter = nuevaPalabra[j];
-            newArray.push(letter);
-        }
-    }
-
-    console.log(newArray);
-    // :)
+    
 }
 
 doubleListVerifier(testListA, testListB);
