@@ -256,18 +256,18 @@ let testListA = ["amor", "sabor", "calor", "firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
-    let count = 0;
+    let reverseWords = 0;
+    let countObject = {};
     for (let i = 0; i < listA.length; i++) {
         for (let j = 0; j < listB.length; j++) {
             listA[i] = listA[i].split('').reverse().join('');
             if (listA[i] === listB[j]) {
-                count++;
+                reverseWords++;
             }
-
         }
-
     }
-    console.log(count);
+    countObject = {reverseWords};
+    console.log(countObject);
 }
 
 doubleListVerifier(testListA, testListB);
