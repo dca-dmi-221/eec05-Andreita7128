@@ -238,10 +238,42 @@ vocalsRemoverFromObject(testObjMultiContainer);
 let someWordsToTest = ["compañeros", "estudiantes", "señores", "amigos", "graduandos", "artistas", "universitarios"];
 
 function lastVocalReplacer(words) {
+
     for (let i = 0; i < words.length; i++) {
-        words[i] = words[i].replace(/.$/, 'x');
+        let word = words[i]
+        for (let j = 0; j < word.length; j++) {
+            word = word.replace(word[findLastVocal(word)], "x");
     }
+        }
     console.log(words);
+}
+
+function findLastVocal(word) {
+    let arrayPosicion = [];
+    let posicion = 0;
+
+    let posArraya = word.lastIndexOf("a");
+    arrayPosicion.push(posArraya);
+
+    let posArraye = word.lastIndexOf("e");
+    arrayPosicion.push(posArraye);
+
+    let posArrayi = word.lastIndexOf("i");
+    arrayPosicion.push(posArrayi);
+
+    let posArrayo = word.lastIndexOf("o");
+    arrayPosicion.push(posArrayo);
+
+    let posArrayu = word.lastIndexOf("u");
+    arrayPosicion.push(posArrayu);
+
+    for (let i = 0; i < arrayPosicion.length; i++) {
+        const number = arrayPosicion[i];
+        if (number > posicion) {
+            posicion = number;
+        }
+    }
+    return posicion;
 }
 
 lastVocalReplacer(someWordsToTest);
@@ -266,7 +298,9 @@ function doubleListVerifier(listA, listB) {
             }
         }
     }
-    countObject = {reverseWords};
+    countObject = {
+        reverseWords
+    };
     console.log(countObject);
 }
 
