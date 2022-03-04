@@ -181,16 +181,16 @@ let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana", "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
-    let posiciones = []
+    let posiciones = [];
     listOfWords.forEach((palabra, i) => {
         if (palabra.split('').every(letra => {
-                return wordToExplore.includes(letra)
+                return wordToExplore.includes(letra);
             }))
-            posiciones.push(i)
+            posiciones.push(i);
     })
-    return posiciones
+    return posiciones;
 }
-console.log(anagramVerifier(testWordToExplore, wordsToVerify))
+console.log(anagramVerifier(testWordToExplore, wordsToVerify));
 
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
@@ -201,8 +201,12 @@ let testObjMultiContainer = {
 };
 
 function vocalsRemoverFromObject(objectMultiContainer) {
-    let newList = objectMultiContainer.listA.concat(objectMultiContainer.listB);
-    let result = []
+
+    let listA = normalWordsList(objectMultiContainer.listA);
+    let listB = normalWordsList(objectMultiContainer.listB);
+
+    let newList = listA.concat(listB);
+    let result = [];
 
     for (let i = 0; i < newList.length; i++) {
         const palabra = newList[i].split('');
@@ -212,10 +216,21 @@ function vocalsRemoverFromObject(objectMultiContainer) {
                 palabra.splice(j, 1);
             }
         }
-        result.push(palabra.join(''))
+        result.push(palabra.join(''));
     }
-    console.log(result)
+    console.log(result);
 }
+
+function normalWordsList(list) {
+    let newList = [];
+    for (let i = 0; i < list.length; i++) {
+        let palabra = normalWord(list[i]);
+        newList.push(palabra);
+    }
+    list = newList;
+    return newList;
+}
+
 vocalsRemoverFromObject(testObjMultiContainer);
 
 /*Dado un arreglo de palabras reemplazar la última vocal por una x y retornar dicho arreglo.*/
